@@ -1,0 +1,99 @@
+* { box-sizing: border-box; }
+html,body,#root { height: 100%; margin: 0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+body { background: #0d1117; color: #c9d1d9; }
+main { max-width: 1000px; margin: 0 auto; }
+
+/* Cards (GitHub dark-ish) */
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; margin: 16px 0; overflow: hidden; }
+.card-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #30363d; }
+.card-title { margin: 0; font-size: 1rem; color: #e6edf3; }
+.card-body { padding: 16px; }
+
+/* Buttons */
+.btn { background: #21262d; color: #c9d1d9; border: 1px solid #30363d; padding: 6px 12px; border-radius: 6px; cursor: pointer; }
+.btn:hover { background: #30363d; }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-primary { background: #238636; border-color: #2ea043; color: #fff; }
+.btn-primary:hover { background: #2ea043; }
+.btn-danger { background: #8b0000; border-color: #a11; color: #fff; }
+.btn-danger:hover { background: #a11; }
+
+/* Form */
+.form-grid { display: flex; flex-direction: column; gap: 16px; }
+.grid-two { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px 16px; }
+.f-group { display: flex; flex-direction: column; gap: 6px; }
+.f-label { font-size: 0.875rem; color: #9da4ae; }
+.f-required { color: #ff6b6b; margin-left: 4px; }
+.f-input, .f-textarea, .f-select { background: #0d1117; border: 1px solid #30363d; color: #c9d1d9; border-radius: 6px; padding: 8px 10px; }
+.f-input:focus, .f-textarea:focus, .f-select:focus { outline: none; border-color: #58a6ff; box-shadow: 0 0 0 3px rgba(56,139,253,0.3); }
+.f-textarea { resize: vertical; }
+
+.resume-page { padding: 8px; }
+.page-title { font-size: 1.5rem; margin: 8px 0 16px; color: #e6edf3; }
+.repeat-item { border: 1px dashed #30363d; border-radius: 8px; padding: 12px; margin-bottom: 12px; }
+.repeat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.repeat-actions { display: flex; justify-content: flex-end; margin-top: 8px; }
+.form-actions { display: flex; justify-content: flex-end; padding: 8px 0 24px; }
+
+/* Resume preview */
+.resume-preview { padding: 8px; }
+.preview-toolbar { position: sticky; top: 0; z-index: 1; }
+.sheet-wrap { display: flex; justify-content: center; padding: 16px 0; }
+.resume-sheet { background: #fff; color: #111; width: 794px; /* A4 ~ 210mm @ 96dpi */ padding: 24px 28px; border: 1px solid #e5e7eb; border-radius: 8px; }
+.resume-sheet a { color: #0366d6; }
+.resume-sheet .rs-header { border-bottom: 2px solid #eee; margin-bottom: 12px; padding-bottom: 8px; }
+.resume-sheet h1 { margin: 0 0 4px; font-size: 28px; }
+.resume-sheet h2 { margin: 10px 0 6px; font-size: 16px; text-transform: uppercase; letter-spacing: .04em; }
+.resume-sheet .rs-item { margin: 6px 0 10px; }
+.resume-sheet .rs-item-head { display: flex; align-items: baseline; gap: 6px; }
+.resume-sheet .rs-item-sub { color: #6b7280; font-size: 12px; }
+.resume-sheet .rs-list { margin: 0; padding-left: 18px; }
+.resume-sheet .chip-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+.resume-sheet .chip { background: #eef2ff; color: #1e3a8a; padding: 4px 8px; border-radius: 999px; font-size: 12px; }
+.resume-sheet .grid-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.resume-sheet .rs-card { border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px; }
+.resume-sheet.two-col { display: grid; grid-template-columns: 240px 1fr; gap: 16px; }
+.resume-sheet.two-col .side { background: #f8fafc; padding: 12px; border: 1px solid #e5e7eb; border-radius: 8px; }
+.resume-sheet .avatar { width: 80px; height: 80px; background: #e5e7eb; border-radius: 50%; margin-bottom: 8px; }
+.resume-sheet .muted { color: #6b7280; }
+.resume-sheet .small { font-size: 12px; }
+.resume-sheet.accent .rs-header { border-bottom-color: #dbeafe; }
+
+/* Infographic bars */
+.bar-list { display: flex; flex-direction: column; gap: 8px; }
+.bar-row { display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 8px; }
+.bar { background: #f3f4f6; border-radius: 999px; height: 10px; overflow: hidden; }
+.bar-fill { height: 100%; background: #93c5fd; width: 60%; }
+.bar-fill.level-beginner { width: 40%; }
+.bar-fill.level-intermediate { width: 60%; }
+.bar-fill.level-expert { width: 85%; }
+
+/* Print styles for PDF */
+@media print {
+	body { background: #fff; }
+	header, .preview-toolbar, .btn, .card, .resume-page, .page-title { display: none !important; }
+	#root { height: auto; }
+	.sheet-wrap { padding: 0 !important; }
+	.resume-sheet { border: none; width: auto; padding: 0; color: #000; }
+	.resume-sheet a { color: #000; text-decoration: none; }
+
+	/* Keep logical blocks together */
+	.resume-sheet .rs-header,
+	.resume-sheet section,
+	.resume-sheet .rs-item,
+	.resume-sheet .rs-card,
+	.resume-sheet .grid-two > * {
+		break-inside: avoid;
+		page-break-inside: avoid;
+	}
+
+	/* Optional helper classes */
+	.avoid-break { break-inside: avoid; page-break-inside: avoid; }
+	.page-break { break-after: page; page-break-after: always; }
+}
+
+@page {
+	size: A4;
+	margin: 12mm;
+}
+
